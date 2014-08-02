@@ -51,6 +51,5 @@
             "cd wp/wp-content ; ln -sf ../../wp-content/plugins . ; ln -sf ../../wp-content/themes .",
             "cd wp ; ln -sf ../wp-config.php . ; ln -sf ../local-config.php ."
         ]
-    },
-    "minimum-stability": "dev"
+    }
 }
