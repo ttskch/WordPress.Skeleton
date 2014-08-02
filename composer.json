@@ -34,7 +34,7 @@
     "require": {
         "wordpress": "3.9.1",
         "wpackagist-theme/twentyfourteen": "1.*",
-        "composer/installers": "1.*"
+        "composer/installers": "1.*@dev"
     },
     "extra": {
         "webroot-dir": "wp",
