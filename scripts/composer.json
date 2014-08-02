@@ -1,15 +1,8 @@
 {
-    "name": "wordpress/skeleton",
-    "description": "WordPress project skeleton to focus only your own source codes.",
-    "keywords": [ "WordPress", "Skeleton", "composer", "wpackagist" ],
-    "homepage": "https://github.com/qckanemoto/WordPress.Skeleton",
+    "name": "{vendor-name}/{project-name}",
+    "description": "",
+    "keywords": [],
     "license": "GPL-2.0",
-    "authors": [
-        {
-            "name": "Takashi Kanemoto",
-            "email": "kanemoto.takashi@gmail.com"
-        }
-    ],
     "repositories": [
         {
             "type": "package",
@@ -34,7 +27,6 @@
     "require": {
         "wordpress": "3.9.1",
         "wpackagist-plugin/wp-multibyte-patch": "2.*",
-        "wpackagist-theme/twentyfourteen": "1.*",
         "composer/installers": "1.*@dev"
     },
     "extra": {
@@ -43,8 +35,10 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "Skeleton\\Scripts\\Linker::symlink",
-            "Skeleton\\Scripts\\Installer::postInstall"
+            "Skeleton\\Scripts\\Linker::symlink"
+        ],
+        "post-update-cmd": [
+            "Skeleton\\Scripts\\Linker::symlink"
         ]
     },
     "autoload": {
