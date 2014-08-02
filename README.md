@@ -11,7 +11,7 @@ $ cp local-config-sample.php local-config.php
 $ vi local-config.php # tailor to your environment
 ```
 
-You can use Japanese or English environment.
+You can use Japanese or English environment as you like.
 
 ## Usage
 

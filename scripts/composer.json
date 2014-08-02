@@ -34,12 +34,8 @@
         "webroot-package": "wordpress"
     },
     "scripts": {
-        "post-install-cmd": [
-            "Skeleton\\Scripts\\Linker::symlink"
-        ],
-        "post-update-cmd": [
-            "Skeleton\\Scripts\\Linker::symlink"
-        ]
+        "post-install-cmd": "Skeleton\\Scripts\\Linker::symlink",
+        "post-update-cmd": "Skeleton\\Scripts\\Linker::symlink"
     },
     "autoload": {
         "psr-4": {
