@@ -5,9 +5,10 @@ WordPress project skeleton to focus only your own source codes.
 ## Installation
 
 ```bash
-$ composer install
+$ composer create-project wordpress/skeleton {project-name}
+$ cd {project-name}
 $ cp local-config-sample.php local-config.php
-$ vi local-config.php # and update for your environment.
+$ vi local-config.php # tailor to your environment
 ```
 
 ## Usage
