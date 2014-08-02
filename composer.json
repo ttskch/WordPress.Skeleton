@@ -1,0 +1,56 @@
+{
+    "name": "wordpress/skeleton",
+    "description": "WordPress project skeleton to focus only your own source codes.",
+    "keywords": [ "WordPress", "Skeleton", "composer", "wpackagist" ],
+    "homepage": "https://github.com/qckanemoto/WordPress.Skeleton",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Takashi Kanemoto",
+            "email": "kanemoto.takashi@gmail.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "wordpress",
+                "type": "webroot",
+                "version": "3.9.1",
+                "dist": {
+                    "type": "zip",
+                    "url": "http://ja.wordpress.org/wordpress-3.9.1-ja.zip"
+                },
+                "require" : {
+                    "fancyguy/webroot-installer": "1.*"
+                }
+            }
+        },
+        {
+            "type": "composer",
+            "url": "http://wpackagist.org"
+        }
+    ],
+    "require": {
+        "wordpress": "3.9.1",
+        "wpackagist-theme/twentyfourteen": "1.*",
+        "composer/installers": "1.*"
+    },
+    "extra": {
+        "webroot-dir": "wp",
+        "webroot-package": "wordpress"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "cd wp/wp-content ; if [ ! -L plugins ]; then mv plugins plugins.org; fi ; if [ ! -L themes ]; then mv themes themes.org; fi",
+            "cd wp/wp-content ; ln -sf ../../wp-content/plugins . ; ln -sf ../../wp-content/themes .",
+            "cd wp ; ln -sf ../wp-config.php . ; ln -sf ../local-config.php ."
+        ],
+        "post-update-cmd": [
+            "cd wp/wp-content ; if [ ! -L plugins ]; then mv plugins plugins.org; fi ; if [ ! -L themes ]; then mv themes themes.org; fi",
+            "cd wp/wp-content ; ln -sf ../../wp-content/plugins . ; ln -sf ../../wp-content/themes .",
+            "cd wp ; ln -sf ../wp-config.php . ; ln -sf ../local-config.php ."
+        ]
+    },
+    "minimum-stability": "dev"
+}
