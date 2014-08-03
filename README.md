@@ -15,24 +15,20 @@ You can use Japanese or English environment as you like.
 
 ## Usage
 
-WordPress will be installed in `/wp/` so you should set DocumentRoot to `/path/to/project/wp/`.
+WordPress core will be installed in `/wp/` so root directory of your website will be `/wp/`. (e.g. "http://example.com/project-name/wp/")
 
-And some files and directories will be symlinked after `composer install/update`, as shown below:
+If you want to hide `/wp/` from URL you should set DocumentRoot to `/path/to/project/wp/`.
 
-* `/wp/wp-content/plugins` -> `/wp-content/plugins`
-* `/wp/wp-content/themes` -> `/wp-content/themes`
-* `/wp/wp-config.php` -> `/wp-config.php`
-* `/wp/local-config.php` -> `/local-config.php`
+Now you can create your own theme in `/wp-content/themes/` and install some plugins into `/wp-content/plugins/`.
+And your git repository doesn't manage `/wp/` and `/wp-content/plugins/` so **you can focus only your own source codes** in `/wp-content/themes`.
 
-Then, `/wp/` and `/wp-content/plugins/` are not managed on your repository so you can focus only your own source codes in `/wp-content/themes`.
-
-Of course you can install plugins or themes via composer as described in the next chapter.
+Of course you can install plugins (or themes) via composer as described in the next chapter.
 
 ## Installing plugins via composer
 
 ### Using WordPress Packagist
 
-You can use [WordPress Packagist](http://wpackagist.org) to install plugins or themes via composer like below:
+You can use [WordPress Packagist](http://wpackagist.org) to install plugins (or themes) via composer like below:
 
 ```json
 {
@@ -55,19 +51,32 @@ To do that you should add package with `"type": "wordpress-plugin"` and require 
         {
             "type": "package",
             "package": {
-                "name": "wp-ogp-customized",
+                "name": "something-on-github",
                 "type": "wordpress-plugin",
                 "version": "dev-master",
                 "source": {
                     "type": "git",
-                    "url": "git@github.com:jyokyoku/wp-ogp-customized.git",
+                    "url": "git@github.com:someone/something.git",
                     "reference": "master"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "something-of-zip",
+                "type": "wordpress-plugin",
+                "version": "1.0",
+                "dist": {
+                    "type": "zip",
+                    "url": "http://something.com/download/1.0.zip"
                 }
             }
         }
     ],
     "require": {
-        "wp-ogp-customized": "dev-master"
+        "something-on-github": "dev-master",
+        "something-of-zip": "1.0"
     }
 }
 ```
@@ -79,3 +88,15 @@ To do that you should add package with `"type": "wordpress-plugin"` and require 
 ```bash
 $ mysqldump -u[user] -p [database] > sql/dump.sql
 ```
+
+## Mechanism, FYI
+
+Your own contents will be symlinked after `composer install/update`, as shown below:
+
+* `/wp/wp-content/my-mu-plugins` -> `/wp-content/mu-plugins`
+* `/wp/wp-content/my-plugins` -> `/wp-content/plugins`
+* `/wp/wp-content/my-themes` -> `/wp-content/themes`
+
+`/wp/wp-content/my-mu-plugins`, `/wp/wp-content/my-plugins` and `/wp/wp-content/my-themes` will be used automatically because of customizing constants of `WPMU_PLUGIN_DIR` and `WP_PLUGIN_DIR` and executing `register_theme_directory`.
+
+Just to tell you, `/wp-config.php` (and `/local-config.php`) need not be symlinked into `/wp/` because they will loaded from `/wp/wp-load.php` during WordPress' normal booting process.
