@@ -34,7 +34,6 @@
     "require": {
         "wordpress": "3.9.1",
         "wpackagist-plugin/wp-multibyte-patch": "2.*",
-        "wpackagist-theme/twentyfourteen": "1.*",
         "composer/installers": "1.*@dev"
     },
     "extra": {

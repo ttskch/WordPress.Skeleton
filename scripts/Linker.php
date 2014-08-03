@@ -11,30 +11,23 @@ class Linker
 
         $paths = [
             [
-                'target' => "{$projectRoot}/wp-config.php",
-                "link" => "{$projectRoot}/wp/wp-config.php",
-            ],
-            [
-                'target' => "{$projectRoot}/local-config.php",
-                "link" => "{$projectRoot}/wp/local-config.php",
-            ],
-            [
                 'target' => "{$projectRoot}/wp-content/plugins",
-                "link" => "{$projectRoot}/wp/wp-content/plugins",
+                "link" => "{$projectRoot}/wp/wp-content/my-plugins",
+            ],
+            [
+                'target' => "{$projectRoot}/wp-content/mu-plugins",
+                "link" => "{$projectRoot}/wp/wp-content/my-mu-plugins",
             ],
             [
                 'target' => "{$projectRoot}/wp-content/themes",
-                "link" => "{$projectRoot}/wp/wp-content/themes",
+                "link" => "{$projectRoot}/wp/wp-content/my-themes",
             ],
         ];
 
         foreach ($paths as $path) {
-            if (!is_link($path['link']) && is_dir($path['link'])) {
-                rename($path['link'], $path['link'] . '.org');
-            } elseif (file_exists($path['link'])) {
-                unlink($path['link']);
+            if (!file_exists($path['link'])) {
+                symlink($path['target'], $path['link']);
             }
-            symlink($path['target'], $path['link']);
         }
     }
 }
