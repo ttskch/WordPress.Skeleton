@@ -81,12 +81,16 @@ To do that you should add package with `"type": "wordpress-plugin"` and require 
 }
 ```
 
-## Backing up mysqldump
+## Backing up database and uploaded files
 
-`/sql/` is for backing up myspldump. You can back up WordPress database if you need.
+`/backup/` directory is just for saving (and version-managing) database and uploaded files. If you need, you can save them here like below:
 
 ```bash
-$ mysqldump -u[user] -p [database] > sql/dump.sql
+$ mysqldump -u[user] -p [database] > backup/dump.sql
+```
+
+```bash
+$ zip -r backup/uploads.zip wp/wp-content/uploads
 ```
 
 ## Mechanism, FYI
