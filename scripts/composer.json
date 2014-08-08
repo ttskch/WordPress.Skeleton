@@ -9,10 +9,10 @@
             "package": {
                 "name": "wordpress",
                 "type": "webroot",
-                "version": "3.9.1",
+                "version": "3.9.2",
                 "dist": {
                     "type": "zip",
-                    "url": "http://ja.wordpress.org/wordpress-3.9.1-ja.zip"
+                    "url": "http://ja.wordpress.org/wordpress-3.9.2-ja.zip"
                 },
                 "require": {
                     "fancyguy/webroot-installer": "1.*@dev"
@@ -25,7 +25,7 @@
         }
     ],
     "require": {
-        "wordpress": "3.9.1",
+        "wordpress": "3.9.2",
         "wpackagist-plugin/wp-multibyte-patch": "2.*",
         "composer/installers": "1.*@dev"
     },
