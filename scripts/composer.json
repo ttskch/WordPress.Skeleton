@@ -1,5 +1,5 @@
 {
-    "name": "{vendor-name}/{project-name}",
+    "name": "vendor/{project-name}",
     "description": "",
     "keywords": [],
     "license": "GPL-2.0",
