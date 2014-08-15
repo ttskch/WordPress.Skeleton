@@ -19,10 +19,8 @@ WordPress core will be installed in `/wp/` so root directory of your website wil
 
 If you want to hide `/wp/` from URL you should set DocumentRoot to `/path/to/project/wp/`.
 
-Now you can create your own theme in `/wp-content/themes/` and install some plugins into `/wp-content/plugins/`.
-And your git repository doesn't manage `/wp/` and `/wp-content/plugins/` so **you can focus only your own source codes** in `/wp-content/themes`.
-
-Of course you can install plugins (or themes) via composer as described in the next chapter.
+Now you can create your own theme in `/wp-content/themes/` and install some plugins into `/wp/wp-content/plugins/` via composer (as described in the next chapter).
+And your git repository doesn't manage `/wp/` so **you can focus only your own source codes** in `/wp-content/themes`.
 
 ## Installing plugins via composer
 
@@ -95,12 +93,16 @@ $ zip -r backup/uploads.zip wp/wp-content/uploads
 
 ## Mechanism, FYI
 
-Your own contents will be symlinked after `composer install/update`, as shown below:
+After install/update "wordpress" package, two symlinks will be created as shown below:
 
 * `/wp/wp-content/my-mu-plugins` -> `/wp-content/mu-plugins`
-* `/wp/wp-content/my-plugins` -> `/wp-content/plugins`
 * `/wp/wp-content/my-themes` -> `/wp-content/themes`
+
+And also one new directory of `/wp/wp-content/my-plugins` which already symlinked from `/wp-content/plugins` will be created.
 
 `/wp/wp-content/my-mu-plugins`, `/wp/wp-content/my-plugins` and `/wp/wp-content/my-themes` will be used automatically because of customizing constants of `WPMU_PLUGIN_DIR` and `WP_PLUGIN_DIR` and executing `register_theme_directory`.
 
-Just to tell you, `/wp-config.php` (and `/local-config.php`) need not be symlinked into `/wp/` because they will loaded from `/wp/wp-load.php` during WordPress' normal booting process.
+Just to tell you, why symlink direction of `my-plugins` is opposite to others is that some assets (such as js or css files) in `my-plugins` will be http-requested.
+If `/wp/wp-content/my-plugins` is a symlink, in plugin source code `plugin_dir_url(__FILE__)` will return not `host/wp-content/my-plugins/xxx` but `host/wp-content/plugins/xxx`.
+
+Additionally, `/wp-config.php` (and `/local-config.php`) need not be symlinked into `/wp/` because they will loaded from `/wp/wp-load.php` during WordPress' normal booting process.
