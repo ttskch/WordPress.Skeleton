@@ -10,14 +10,16 @@ class Installer
         $projectRoot = dirname(__DIR__);
         $projectName = (new \SplFileInfo($projectRoot))->getFilename();
 
-        // composer.json.
-        $src = "{$projectRoot}/scripts/composer.json";
-        $dst = "{$projectRoot}/composer.json";
-        $content = file_get_contents($src);
+        // delete old composer.json and composer.lock.
+        unlink("{$projectRoot}/composer.json");
+        unlink("{$projectRoot}/composer.lock");
+
+        // put new composer.json.
+        $newJson = "{$projectRoot}/scripts/composer.json";
+        $content = file_get_contents($newJson);
         $content = str_replace('{project-name}', strtolower($projectName), $content);
-        file_put_contents($src, $content);
-        unlink($dst);
-        rename($src, $dst);
+        file_put_contents($newJson, $content);
+        rename($newJson, "{$projectRoot}/composer.json");
 
         // delete self.
         unlink(__FILE__);
