@@ -34,12 +34,12 @@
         "webroot-package": "wordpress"
     },
     "scripts": {
-        "post-package-install": "Skeleton\\Scripts\\Linker::postInstallWordPress",
-        "post-package-update": "Skeleton\\Scripts\\Linker::postInstallWordPress"
+        "post-package-install": "WordPressInstaller::postPackageInstall",
+        "post-package-update": "WordPressInstaller::postPackageInstall"
     },
     "autoload": {
-        "psr-4": {
-            "Skeleton\\Scripts\\": "scripts/"
+        "psr-0": {
+            "": "scripts/"
         }
     }
 }

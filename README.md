@@ -2,6 +2,10 @@
 
 WordPress project skeleton to focus only your own source codes.
 
+## Requirements
+
+PHP 5.3+
+
 ## Installation
 
 ```bash
@@ -93,16 +97,11 @@ $ zip -r backup/uploads.zip wp/wp-content/uploads
 
 ## Mechanism, FYI
 
-After install/update "wordpress" package, two symlinks will be created as shown below:
+After install/update "wordpress" package, two symlinks will be created in `/wp/` environment as shown below:
 
 * `/wp/wp-content/my-mu-plugins` -> `/wp-content/mu-plugins`
 * `/wp/wp-content/my-themes` -> `/wp-content/themes`
 
-And also one new directory of `/wp/wp-content/my-plugins` which already symlinked from `/wp-content/plugins` will be created.
+And `/wp/wp-content/my-mu-plugins` and `/wp/wp-content/my-themes` will be used automatically because of customizing constant of `WPMU_PLUGIN_DIR` and executing `register_theme_directory`.
 
-`/wp/wp-content/my-mu-plugins`, `/wp/wp-content/my-plugins` and `/wp/wp-content/my-themes` will be used automatically because of customizing constants of `WPMU_PLUGIN_DIR` and `WP_PLUGIN_DIR` and executing `register_theme_directory`.
-
-Just to tell you, why symlink direction of `my-plugins` is opposite to others is that some assets (such as js or css files) in `my-plugins` will be http-requested.
-If `/wp/wp-content/my-plugins` is a symlink, in plugin source code `plugin_dir_url(__FILE__)` will return not `host/wp-content/my-plugins/xxx` but `host/wp-content/plugins/xxx`.
-
-Additionally, `/wp-config.php` (and `/local-config.php`) need not be symlinked into `/wp/` because they will loaded from `/wp/wp-load.php` during WordPress' normal booting process.
+Just to tell you, `/wp-config.php` (and `/local-config.php`) need not be symlinked into `/wp/` because they will loaded from `/wp/wp-load.php` during WordPress' normal booting process.

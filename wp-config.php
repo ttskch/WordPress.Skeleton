@@ -23,10 +23,9 @@ define('DB_CHARSET', 'utf8');
 define('DB_COLLATE', '');
 
 /**
- * Custom Plugin Directory
+ * Custom MU-Plugin Directory
  */
 define('WPMU_PLUGIN_DIR', __DIR__ . '/wp/wp-content/my-mu-plugins');
-define('WP_PLUGIN_DIR', __DIR__ . '/wp/wp-content/my-plugins');
 
 /**#@+
  * Authentication Unique Keys and Salts.
@@ -63,4 +62,4 @@ if (!defined('ABSPATH'))
     define('ABSPATH', dirname(__FILE__) . '/wp/');
 
 /** Sets up WordPress vars and included files. */
-require_once(ABSPATH . 'wp-settings.php');
+require_once ABSPATH . 'wp-settings.php';

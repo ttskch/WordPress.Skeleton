@@ -1,9 +1,7 @@
 <?php
-namespace Skeleton\Scripts;
-
 use Composer\Script\Event;
 
-class Installer
+class SkeletonInstaller
 {
     public static function postInstall(Event $event = null)
     {

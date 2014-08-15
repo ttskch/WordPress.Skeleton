@@ -1,11 +1,9 @@
 <?php
-namespace Skeleton\Scripts;
-
 use Composer\Script\Event;
 
-class Linker
+class WordPressInstaller
 {
-    public static function postInstallWordPress(Event $event = null)
+    public static function postPackageInstall(Event $event = null)
     {
         $installedPackageName = $event->getOperation()->getPackage()->getName();
         if ($installedPackageName !== 'wordpress') {
@@ -31,11 +29,20 @@ class Linker
             }
         }
 
-        // create wp/wp-content/my-plugins dir.
-        $myPluginsDirPath = "{$projectRoot}/wp/wp-content/my-plugins";
-        if (!file_exists($myPluginsDirPath)) {
-            mkdir($myPluginsDirPath);
-            touch("{$myPluginsDirPath}/index.php");
+        // delete pre-installed plugins.
+        $pluginsDir = "{$projectRoot}/wp/wp-content/plugins";
+        $files = new \RecursiveIteratorIterator(
+            new \RecursiveDirectoryIterator($pluginsDir, \FilesystemIterator::SKIP_DOTS),
+            \RecursiveIteratorIterator::CHILD_FIRST
+        );
+        foreach ($files as $file) {
+            if ($file->getPathname() === "{$pluginsDir}/index.php") {
+                continue;
+            } elseif ($file->isDir()) {
+                rmdir($file->getPathname());
+            } else {
+                unlink($file->getPathname());
+            }
         }
     }
 }
