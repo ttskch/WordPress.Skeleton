@@ -34,8 +34,8 @@
         "webroot-package": "wordpress"
     },
     "scripts": {
-        "post-install-cmd": "Skeleton\\Scripts\\Linker::symlink",
-        "post-update-cmd": "Skeleton\\Scripts\\Linker::symlink"
+        "post-package-install": "Skeleton\\Scripts\\Linker::postInstallWordPress",
+        "post-package-update": "Skeleton\\Scripts\\Linker::postInstallWordPress"
     },
     "autoload": {
         "psr-4": {

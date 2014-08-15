@@ -4,7 +4,4 @@
 /composer.lock
 /wp
 /vendor
-/wp-content/plugins/*
-!/wp-content/plugins/index.php
-/wp-content/themes/twentyfourteen
 /local-config.php
