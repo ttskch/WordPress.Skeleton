@@ -15,11 +15,11 @@ class WordPressInstaller
         // create symlinks under wp/wp-content dir.
         $paths = [
             [
-                'target' => "{$projectRoot}/wp-content/mu-plugins",
+                'target' => "../../wp-content/mu-plugins",
                 "link" => "{$projectRoot}/wp/wp-content/my-mu-plugins",
             ],
             [
-                'target' => "{$projectRoot}/wp-content/themes",
+                'target' => "../../wp-content/themes",
                 "link" => "{$projectRoot}/wp/wp-content/my-themes",
             ],
         ];
