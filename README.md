@@ -1,5 +1,8 @@
 # WordPress.Skeleton
 
+[![Latest Stable Version](https://poser.pugx.org/wordpress/skeleton/v/stable.svg)](https://packagist.org/packages/wordpress/skeleton)
+[![Total Downloads](https://poser.pugx.org/wordpress/skeleton/downloads.svg)](https://packagist.org/packages/wordpress/skeleton)
+
 WordPress project skeleton to focus only your own source codes.
 
 ## Requirements
