@@ -1,15 +1,24 @@
 <?php
 use Composer\Script\Event;
 
-class WordPressInstaller
+class Installer
 {
     public static function postPackageInstall(Event $event = null)
     {
-        $installedPackageName = $event->getOperation()->getPackage()->getName();
-        if ($installedPackageName !== 'wordpress') {
-            return;
+        if ($event->getOperation()->getPackage()->getName() === 'wordpress') {
+            self::initWordPress();
         }
+    }
 
+    public static function postPackageUpdate(Event $event = null)
+    {
+        if ($event->getOperation()->getInitialPackage()->getName() === 'wordpress') {
+            self::initWordPress();
+        }
+    }
+
+    private static function initWordPress()
+    {
         $projectRoot = dirname(__DIR__);
 
         // create symlinks under wp/wp-content dir.

@@ -41,7 +41,7 @@
         "webroot-package": "wordpress"
     },
     "scripts": {
-        "post-package-install": "WordPressInstaller::postPackageInstall",
+        "post-package-install": "Installer::postPackageInstall",
         "post-install-cmd": "SkeletonInstaller::postInstall"
     },
     "autoload": {
