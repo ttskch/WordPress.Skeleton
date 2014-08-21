@@ -6,8 +6,8 @@ class SkeletonInstaller
     public static function postInstall(Event $event = null)
     {
         $projectRoot = dirname(__DIR__);
-        $SplFileInfo = new \SplFileInfo($projectRoot);
-        $projectName = $SplFileInfo->getFilename();
+        $splFile = new \SplFileInfo($projectRoot);
+        $projectName = $splFile->getFilename();
 
         // delete old composer.json and composer.lock.
         unlink("{$projectRoot}/composer.json");
