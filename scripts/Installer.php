@@ -22,16 +22,16 @@ class Installer
         $projectRoot = dirname(__DIR__);
 
         // create symlinks under wp/wp-content dir.
-        $paths = [
-            [
+        $paths = array(
+            array(
                 'target' => "../../wp-content/mu-plugins",
                 "link" => "{$projectRoot}/wp/wp-content/my-mu-plugins",
-            ],
-            [
+            ),
+            array(
                 'target' => "../../wp-content/themes",
                 "link" => "{$projectRoot}/wp/wp-content/my-themes",
-            ],
-        ];
+            ),
+        );
         foreach ($paths as $path) {
             if (!file_exists($path['link'])) {
                 symlink($path['target'], $path['link']);
