@@ -7,7 +7,8 @@ WordPress project skeleton to focus only your own source codes.
 
 ## Requirements
 
-PHP 5.3+
+* PHP 5.3+
+* Linux or OSX only
 
 ## Installation
 
