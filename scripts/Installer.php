@@ -1,16 +1,16 @@
 <?php
-use Composer\Script\Event;
+use Composer\Installer\PackageEvent;
 
 class Installer
 {
-    public static function postPackageInstall(Event $event = null)
+    public static function postPackageInstall(PackageEvent $event = null)
     {
         if ($event->getOperation()->getPackage()->getName() === 'wordpress') {
             self::initWordPress();
         }
     }
 
-    public static function postPackageUpdate(Event $event = null)
+    public static function postPackageUpdate(PackageEvent $event = null)
     {
         if ($event->getOperation()->getInitialPackage()->getName() === 'wordpress') {
             self::initWordPress();
