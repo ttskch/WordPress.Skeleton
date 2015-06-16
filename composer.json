@@ -16,13 +16,13 @@
             "package": {
                 "name": "wordpress",
                 "type": "webroot",
-                "version": "3.9.2",
+                "version": "4.2.2",
                 "dist": {
                     "type": "zip",
-                    "url": "http://ja.wordpress.org/wordpress-3.9.2-ja.zip"
+                    "url": "http://ja.wordpress.org/wordpress-4.2.2-ja.zip"
                 },
                 "require": {
-                    "fancyguy/webroot-installer": "1.*@dev"
+                    "fancyguy/webroot-installer": "~1.1"
                 }
             }
         },
@@ -32,9 +32,9 @@
         }
     ],
     "require": {
-        "wordpress": "3.9.2",
-        "wpackagist-plugin/wp-multibyte-patch": "2.*",
-        "composer/installers": "1.*@dev"
+        "wordpress": "4.2.2",
+        "wpackagist-plugin/wp-multibyte-patch": "~2.3",
+        "composer/installers": "~1.0"
     },
     "extra": {
         "webroot-dir": "wp",
