@@ -48,7 +48,7 @@
         "post-install-cmd": "php bin/initializer.php"
     },
     "autoload": {
-        "psr-0": {
+        "psr-4": {
             "": "scripts/"
         }
     }
