@@ -33,8 +33,10 @@
     ],
     "require": {
         "wordpress": "4.2.2",
-        "wpackagist-plugin/wp-multibyte-patch": "~2.3",
-        "composer/installers": "~1.0"
+        "wpackagist-plugin/wp-multibyte-patch": "~2.3"
+    },
+    "require-dev": {
+        "composer/composer": "~1.0@dev"
     },
     "extra": {
         "webroot-dir": "wp",
@@ -42,7 +44,8 @@
     },
     "scripts": {
         "post-package-install": "Installer::postPackageInstall",
-        "post-install-cmd": "SkeletonInstaller::postInstall"
+        "post-package-update": "Installer::postPackageUpdate",
+        "post-install-cmd": "php bin/initializer.php"
     },
     "autoload": {
         "psr-0": {

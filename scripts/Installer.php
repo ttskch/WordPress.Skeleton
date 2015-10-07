@@ -1,18 +1,26 @@
 <?php
+use Composer\DependencyResolver\Operation\InstallOperation;
+use Composer\DependencyResolver\Operation\UpdateOperation;
 use Composer\Installer\PackageEvent;
 
 class Installer
 {
     public static function postPackageInstall(PackageEvent $event = null)
     {
-        if ($event->getOperation()->getPackage()->getName() === 'wordpress') {
+        /** @var InstallOperation $operation */
+        $operation = $event->getOperation();
+
+        if ($operation->getPackage()->getName() === 'wordpress') {
             self::initWordPress();
         }
     }
 
     public static function postPackageUpdate(PackageEvent $event = null)
     {
-        if ($event->getOperation()->getInitialPackage()->getName() === 'wordpress') {
+        /** @var UpdateOperation $operation */
+        $operation = $event->getOperation();
+
+        if ($operation->getInitialPackage()->getName() === 'wordpress') {
             self::initWordPress();
         }
     }
