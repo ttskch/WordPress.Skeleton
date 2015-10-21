@@ -32,6 +32,7 @@
         }
     ],
     "require": {
+        "php": ">=5.3",
         "wordpress": "*",
         "wpackagist-plugin/wp-multibyte-patch": "~2.3"
     },

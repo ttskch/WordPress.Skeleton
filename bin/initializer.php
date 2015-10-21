@@ -9,7 +9,7 @@ $jsonPath = "{$projectRoot}/composer.json";
 $jsonArray = json_decode(file_get_contents($jsonPath), true);
 $jsonArray['name'] = "vendor/{$projectName}";
 $jsonArray['description'] = '';
-$jsonArray['keywords'] = [];
+$jsonArray['keywords'] = array();
 unset($jsonArray['homepage']);
 unset($jsonArray['authors']);
 unset($jsonArray['require-dev']);
