@@ -116,3 +116,12 @@ After install/update "wordpress" package, two symlinks will be created in `/wp/`
 And `/wp/wp-content/my-mu-plugins` and `/wp/wp-content/my-themes` will be used automatically because of customizing constant of `WPMU_PLUGIN_DIR` and executing `register_theme_directory`.
 
 Just to tell you, `/wp-config.php` (and `/local-config.php`) need not be symlinked into `/wp/` because they will loaded from `/wp/wp-load.php` during WordPress' normal booting process.
+
+## Commonly-used plugins
+
+* [TinyMCE Advanced](https://wordpress.org/plugins/tinymce-advanced/)
+* [Google XML Sitemaps](https://wordpress.org/plugins/google-sitemap-generator/)
+* [Acunetix Secure WordPress](https://wordpress.org/plugins/secure-wordpress/)
+* [Simple Local Avatars](https://wordpress.org/plugins/simple-local-avatars/)
+* [User Role Editor](https://wordpress.org/plugins/user-role-editor/)
+* [jyokyoku/wp-ogp-customized](https://github.com/jyokyoku/wp-ogp-customized)
