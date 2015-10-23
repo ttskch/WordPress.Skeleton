@@ -1,7 +1,5 @@
-.DS_Store
-.idea
-/composer.phar
-/composer.lock
-/wp
-/vendor
-/local-config.php
+composer.phar
+composer.lock
+wp
+vendor
+local-config.php
