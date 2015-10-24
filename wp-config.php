@@ -23,9 +23,10 @@ define('DB_CHARSET', 'utf8');
 define('DB_COLLATE', '');
 
 /**
- * Custom MU-Plugin Directory
+ * Custom Plugin and MU-Plugin Directories
  */
-define('WPMU_PLUGIN_DIR', __DIR__ . '/wp-content/mu-plugins');
+ define('WPMU_PLUGIN_DIR', __DIR__ . '/wp-content/mu-plugins');
+ define('WP_PLUGIN_DIR', __DIR__ . '/wp-content/plugins');
 
 /**#@+
  * Authentication Unique Keys and Salts.
