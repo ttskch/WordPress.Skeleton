@@ -17,7 +17,6 @@ Advantages compared to WordPress-Skeleton:
 ## Requirements
 
 * PHP 5.3+
-* Linux or OSX only
 
 ## Installation
 
@@ -29,6 +28,10 @@ $ vi local-config.php # tailor to your environment
 ```
 
 You can use Japanese or English environment as you like.
+
+### Known problem
+
+There is a known problem for Windows 7. See [here](https://github.com/qckanemoto/WordPress.Skeleton/issues/2#issuecomment-150803434) to find a workaround.
 
 ## Usage
 
