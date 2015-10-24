@@ -25,7 +25,7 @@ define('DB_COLLATE', '');
 /**
  * Custom MU-Plugin Directory
  */
-define('WPMU_PLUGIN_DIR', __DIR__ . '/wp/wp-content/my-mu-plugins');
+define('WPMU_PLUGIN_DIR', __DIR__ . '/wp-content/mu-plugins');
 
 /**#@+
  * Authentication Unique Keys and Salts.
