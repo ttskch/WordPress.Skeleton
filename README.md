@@ -12,6 +12,7 @@ Advantages compared to WordPress-Skeleton:
 * You don't need to do `git submodule init/update`. (so installing is very fast)
 * You can set `/wp/` as DocumentRoot. (in other words, **you can hide "/wp/" from url**)
 * It works even on descendant directory of DocumentRoot. (you can get it to work casually ,without vhost settings, for local development)
+* All languages will be installed by default.
 
 ## Requirements
 
@@ -35,7 +36,7 @@ WordPress core will be installed in `/wp/` so root directory of your website wil
 
 If you want to hide `/wp/` from URL you should set DocumentRoot to `/path/to/project/wp/`.
 
-Now you can create your own theme in `/wp-content/themes/` and install some plugins into `/wp/wp-content/plugins/` via composer (as described in the next chapter).
+Now you can create your own theme in `/wp-content/themes/` and install some plugins into `/wp-content/plugins/` via composer (as described in the next chapter).
 And your git repository doesn't manage `/wp/` so **you can focus only your own source codes** in `/wp-content/themes`.
 
 ## Installing plugins via composer

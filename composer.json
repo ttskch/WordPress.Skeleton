@@ -12,36 +12,21 @@
     ],
     "repositories": [
         {
-            "type": "package",
-            "package": {
-                "name": "wordpress",
-                "type": "webroot",
-                "version": "4.3.1",
-                "dist": {
-                    "type": "zip",
-                    "url": "http://ja.wordpress.org/wordpress-4.3.1-ja.zip"
-                },
-                "require": {
-                    "fancyguy/webroot-installer": "~1.1"
-                }
-            }
-        },
-        {
             "type": "composer",
             "url": "http://wpackagist.org"
         }
     ],
     "require": {
         "php": ">=5.3",
-        "wordpress": "*",
+        "johnpbloch/wordpress": "*",
+        "wpackagist-plugin/wp-i18n": "dev-trunk",
         "wpackagist-plugin/wp-multibyte-patch": "~2.3"
     },
     "require-dev": {
         "composer/composer": "~1.0@dev"
     },
     "extra": {
-        "webroot-dir": "wp",
-        "webroot-package": "wordpress"
+        "wordpress-install-dir": "wp"
     },
     "scripts": {
         "post-package-install": "Installer::postPackageInstall",

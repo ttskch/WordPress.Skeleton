@@ -10,7 +10,7 @@ class Installer
         /** @var InstallOperation $operation */
         $operation = $event->getOperation();
 
-        if ($operation->getPackage()->getName() === 'wordpress') {
+        if ($operation->getPackage()->getName() === 'johnpbloch/wordpress') {
             self::initWordPress();
         }
     }
@@ -20,7 +20,7 @@ class Installer
         /** @var UpdateOperation $operation */
         $operation = $event->getOperation();
 
-        if ($operation->getInitialPackage()->getName() === 'wordpress') {
+        if ($operation->getInitialPackage()->getName() === 'johnpbloch/wordpress') {
             self::initWordPress();
         }
     }
@@ -29,29 +29,13 @@ class Installer
     {
         $projectRoot = dirname(__DIR__);
 
-        // create symlinks under wp/wp-content dir.
+        // create symlink under wp/wp-content dir.
         $path = array(
             'target' => "../../wp-content/themes",
             "link" => "{$projectRoot}/wp/wp-content/my-themes",
         );
         if (!file_exists($path['link'])) {
             symlink($path['target'], $path['link']);
-        }
-
-        // delete pre-installed plugins.
-        $pluginsDir = "{$projectRoot}/wp/wp-content/plugins";
-        $files = new \RecursiveIteratorIterator(
-            new \RecursiveDirectoryIterator($pluginsDir, \FilesystemIterator::SKIP_DOTS),
-            \RecursiveIteratorIterator::CHILD_FIRST
-        );
-        foreach ($files as $file) {
-            if ($file->getPathname() === "{$pluginsDir}/index.php") {
-                continue;
-            } elseif ($file->isDir()) {
-                rmdir($file->getPathname());
-            } else {
-                unlink($file->getPathname());
-            }
         }
     }
 }
