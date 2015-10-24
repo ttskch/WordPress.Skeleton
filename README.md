@@ -108,12 +108,14 @@ $ zip -r backup/uploads.zip wp/wp-content/uploads
 
 ## Mechanism, FYI
 
-After install/update "wordpress" package, two symlinks will be created in `/wp/` environment as shown below:
+After install/update "wordpress" package, a symlink will be created in `/wp/` environment as shown below:
 
-* `/wp/wp-content/my-mu-plugins` -> `/wp-content/mu-plugins`
 * `/wp/wp-content/my-themes` -> `/wp-content/themes`
 
-And `/wp/wp-content/my-mu-plugins` and `/wp/wp-content/my-themes` will be used automatically because of customizing constant of `WPMU_PLUGIN_DIR` and executing `register_theme_directory`.
+And on WordPress's booting process, `/wp/wp-content/my-theme` will be enabled as an additional theme directory by following process:
+
+1. `WPMU_PLUGIN_DIR` points `/wp-content/mu-plugins` because of customizing in `/wp-config.php`.
+2. In `/wp-content/mu-plugins/add-skeleton-theme-directory.php`, theme directory is added with `register_theme_directory()` function.
 
 Just to tell you, `/wp-config.php` (and `/local-config.php`) need not be symlinked into `/wp/` because they will loaded from `/wp/wp-load.php` during WordPress' normal booting process.
 

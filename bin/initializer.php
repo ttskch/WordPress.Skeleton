@@ -1,5 +1,4 @@
 <?php
-
 $projectRoot = dirname(__DIR__);
 $splFile = new \SplFileInfo($projectRoot);
 $projectName = $splFile->getFilename();
