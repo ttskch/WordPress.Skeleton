@@ -3,11 +3,12 @@
 [![Latest Stable Version](https://poser.pugx.org/wordpress/skeleton/v/stable.svg)](https://packagist.org/packages/wordpress/skeleton)
 [![Total Downloads](https://poser.pugx.org/wordpress/skeleton/downloads.svg)](https://packagist.org/packages/wordpress/skeleton)
 
-WordPress project skeleton to focus only your own source codes. Inspired by [markjaquith/WordPress-Skeleton](https://github.com/markjaquith/WordPress-Skeleton).
+WordPress project skeleton to focus only your own source codes because of composer-friendly design. Inspired by [markjaquith/WordPress-Skeleton](https://github.com/markjaquith/WordPress-Skeleton).
 
 Advantages compared to WordPress-Skeleton:
 
 * You can install via `composer create-project`.
+* You can add plugins via `composer require/install`.
 * You don't need to do `git submodule init/update`. (so installing is very fast)
 * You can set `/wp/` as DocumentRoot. (in other words, **you can hide "/wp/" from url**)
 * It works even on descendant directory of DocumentRoot. (you can get it to work casually ,without vhost settings, for local development)
