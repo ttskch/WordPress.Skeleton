@@ -29,13 +29,36 @@ class Installer
     {
         $projectRoot = dirname(__DIR__);
 
-        // create symlink under wp/wp-content dir.
-        $path = array(
-            'target' => "../../wp-content/themes",
-            "link" => "{$projectRoot}/wp/wp-content/my-themes",
+        // delete original plugins directory.
+        $pluginsDir = "{$projectRoot}/wp/wp-content/plugins";
+        $files = new \RecursiveIteratorIterator(
+            new \RecursiveDirectoryIterator($pluginsDir, \FilesystemIterator::SKIP_DOTS),
+            \RecursiveIteratorIterator::CHILD_FIRST
         );
-        if (!file_exists($path['link'])) {
-            symlink($path['target'], $path['link']);
+        foreach ($files as $file) {
+            if ($file->isDir()) {
+                rmdir($file->getPathname());
+            } else {
+                unlink($file->getPathname());
+            }
+        }
+        rmdir($pluginsDir);
+
+        // create symlink under wp/wp-content dir.
+        $paths = array(
+            array(
+                'target' => '../../wp-content/themes',
+                'link' => "{$projectRoot}/wp/wp-content/my-themes",
+            ),
+            array(
+                'target' => '../../wp-content/plugins',
+                'link' => "{$projectRoot}/wp/wp-content/plugins",
+            ),
+        );
+        foreach ($paths as $path) {
+            if (!file_exists($path['link'])) {
+                symlink($path['target'], $path['link']);
+            }
         }
     }
 }
