@@ -29,7 +29,7 @@ class Installer
     {
         $projectRoot = dirname(__DIR__);
 
-        // delete original plugins directory.
+        // delete original plugins dir.
         $pluginsDir = "{$projectRoot}/wp/wp-content/plugins";
         $files = new \RecursiveIteratorIterator(
             new \RecursiveDirectoryIterator($pluginsDir, \FilesystemIterator::SKIP_DOTS),
@@ -44,7 +44,7 @@ class Installer
         }
         rmdir($pluginsDir);
 
-        // create symlink under wp/wp-content dir.
+        // create symlinks under wp/wp-content dir.
         $paths = array(
             array(
                 'target' => '../../wp-content/themes',
