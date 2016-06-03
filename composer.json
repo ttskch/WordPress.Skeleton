@@ -2,7 +2,7 @@
     "name": "wordpress/skeleton",
     "description": "WordPress project skeleton to focus only your own source codes.",
     "keywords": [ "WordPress", "Skeleton", "composer", "wpackagist" ],
-    "homepage": "https://github.com/qckanemoto/WordPress.Skeleton",
+    "homepage": "https://github.com/ttskch/WordPress.Skeleton",
     "license": "GPL-2.0",
     "authors": [
         {
