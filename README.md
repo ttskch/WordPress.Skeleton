@@ -1,5 +1,7 @@
 # WordPress.Skeleton
 
+![image](https://cloud.githubusercontent.com/assets/4360663/15803328/f4f2f660-2b12-11e6-8d4e-59461e223640.png)
+
 [![Latest Stable Version](https://poser.pugx.org/wordpress/skeleton/v/stable.svg)](https://packagist.org/packages/wordpress/skeleton)
 [![Total Downloads](https://poser.pugx.org/wordpress/skeleton/downloads.svg)](https://packagist.org/packages/wordpress/skeleton)
 
