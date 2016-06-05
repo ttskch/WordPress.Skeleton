@@ -31,7 +31,7 @@ You can use Japanese or English environment as you like.
 
 ### Known problem
 
-There is a known problem for Windows 7. See [here](https://github.com/qckanemoto/WordPress.Skeleton/issues/2#issuecomment-150803434) to find a workaround.
+There is a known problem for Windows 7. See [here](https://github.com/ttskch/WordPress.Skeleton/issues/2#issuecomment-150803434) to find a workaround.
 
 ## Usage
 
