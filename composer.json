@@ -1,6 +1,6 @@
 {
     "name": "wordpress/skeleton",
-    "description": "WordPress project skeleton to focus only your own source codes.",
+    "description": "Composer based WordPress project skeleton.",
     "keywords": [ "WordPress", "Skeleton", "composer", "wpackagist" ],
     "homepage": "https://github.com/ttskch/WordPress.Skeleton",
     "license": "GPL-2.0",
