@@ -22,7 +22,7 @@ Advantages compared to WordPress-Skeleton:
 
 ## Installation
 
-```bash
+```sh
 $ composer create-project wordpress/skeleton {project-name}
 $ cd {project-name}
 $ cp local-config-sample.php local-config.php
@@ -31,9 +31,22 @@ $ vi local-config.php # tailor to your environment
 
 You can use Japanese or English environment as you like.
 
-### Known problem
+### Note: For Windows
 
-There is a known problem for Windows 7. See [here](https://github.com/ttskch/WordPress.Skeleton/issues/2#issuecomment-150803434) to find a workaround.
+On Windows environment, maybe you need to use console (like cmd.exe) as an administrator user for creating symlink.
+
+If you still have any symlink related problem, please create-project in following way :bow:
+
+```sh
+$ composer create-project wordpress/skeleton {project-name} --no-scripts
+$ cd {project-name}
+$ mklink /D wp\wp-content\my-themes ..\..\wp-content\themes # or create symlink in some way
+$ mklink /D wp\wp-content\uploads ..\..\wp-content\uploads # or create symlink in some way
+$ rm -rf wp/wp-content/plugins
+$ mklink /D wp\wp-content\plugins ..\..\wp-content\plugins # or create symlink in some way
+$ cp local-config-sample.php local-config.php
+$ vi local-config.php # tailor to your environment
+```
 
 ## Usage
 
@@ -105,11 +118,11 @@ To do that you should add package with `"type": "wordpress-plugin"` and require 
 
 `/backup/` directory is just for saving (and version-managing) database and uploaded files. If you need, you can save them here like below:
 
-```bash
+```sh
 $ mysqldump -u[user] -p [database] > backup/dump.sql
 ```
 
-```bash
+```sh
 $ zip -r backup/uploads.zip wp/wp-content/uploads
 ```
 
