@@ -55,9 +55,9 @@ class Installer
                 'link' => "{$projectRoot}/wp/wp-content/plugins",
             ),
             array(
-                'target' => '../../backup/uploads',
+                'target' => '../../wp-content/uploads',
                 'link' => "{$projectRoot}/wp/wp-content/uploads",
-            )
+            ),
         );
         foreach ($paths as $path) {
             if (!file_exists($path['link'])) {
