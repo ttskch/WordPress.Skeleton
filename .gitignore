@@ -3,3 +3,5 @@ composer.lock
 vendor
 wp
 local-config.php
+/backup/uploads/*
+!/backup/uploads/.keep
