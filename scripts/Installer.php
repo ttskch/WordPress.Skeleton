@@ -44,7 +44,7 @@ class Installer
         }
         rmdir($pluginsDir);
 
-        // create symlinks under wp/wp-content dir.
+        // define symlinks under wp/wp-content dir.
         $paths = array(
             array(
                 'target' => '../../wp-content/themes',
@@ -59,10 +59,32 @@ class Installer
                 'link' => "{$projectRoot}/wp/wp-content/uploads",
             ),
         );
-        foreach ($paths as $path) {
-            if (!file_exists($path['link'])) {
-                symlink($path['target'], $path['link']);
+
+        $isWin = boolval(stristr(PHP_OS, 'WIN'));
+
+        // for WIN, replace directory separators.
+        if ($isWin) {
+            foreach ($paths as $i => $path) {
+                foreach ($path as $key => $str) {
+                    $paths[$i][$key] = str_replace('/', '\\', $str);
+                }
             }
         }
+
+        // create symlinks.
+        foreach ($paths as $path) {
+            if (!file_exists($path['link'])) {
+                if ($isWin) {
+                    self::symlinkForWin($path['target'], $path['link']);
+                } else {
+                    symlink($path['target'], $path['link']);
+                }
+            }
+        }
+    }
+
+    private static function symlinkForWin($target, $link)
+    {
+        exec(sprintf('mklink /D %s %s', escapeshellarg($link), escapeshellarg($target)));
     }
 }
