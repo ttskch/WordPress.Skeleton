@@ -60,7 +60,7 @@ class Installer
             ),
         );
 
-        $isWin = DIRECTORY_SEPARATOR != '/';
+        $isWin = DIRECTORY_SEPARATOR !== '/';
 
         // for WIN, replace directory separators.
         if ($isWin) {
