@@ -23,7 +23,7 @@
         "wpackagist-plugin/wp-multibyte-patch": "~2.3"
     },
     "require-dev": {
-        "composer/composer": "~1.0@dev"
+        "composer/composer": "^1.3"
     },
     "extra": {
         "wordpress-install-dir": "wp"
