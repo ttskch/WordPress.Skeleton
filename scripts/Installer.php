@@ -25,24 +25,26 @@ class Installer
         }
     }
 
-    private static function initWordPress()
+    public static function initWordPress()
     {
         $projectRoot = dirname(__DIR__);
 
         // delete original plugins dir.
         $pluginsDir = "{$projectRoot}/wp/wp-content/plugins";
-        $files = new \RecursiveIteratorIterator(
-            new \RecursiveDirectoryIterator($pluginsDir, \FilesystemIterator::SKIP_DOTS),
-            \RecursiveIteratorIterator::CHILD_FIRST
-        );
-        foreach ($files as $file) {
-            if ($file->isDir()) {
-                rmdir($file->getPathname());
-            } else {
-                unlink($file->getPathname());
+        if (is_dir($pluginsDir) && !is_link($pluginsDir)) {
+            $files = new \RecursiveIteratorIterator(
+                new \RecursiveDirectoryIterator($pluginsDir, \FilesystemIterator::SKIP_DOTS),
+                \RecursiveIteratorIterator::CHILD_FIRST
+            );
+            foreach ($files as $file) {
+                if ($file->isDir()) {
+                    rmdir($file->getPathname());
+                } else {
+                    unlink($file->getPathname());
+                }
             }
+            rmdir($pluginsDir);
         }
-        rmdir($pluginsDir);
 
         // define symlinks under wp/wp-content dir.
         $paths = array(
