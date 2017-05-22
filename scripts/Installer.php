@@ -26,7 +26,10 @@ class Installer
         }
     }
 
-    public static function initWordPress(Event $event)
+    /**
+     * @param $event PackageEvent|Event
+     */
+    public static function initWordPress($event)
     {
         $extra = $event->getComposer()->getPackage()->getExtra();
 
