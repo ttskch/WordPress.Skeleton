@@ -32,7 +32,7 @@
         "post-package-install": "Installer::postPackageInstall",
         "post-package-update": "Installer::postPackageUpdate",
         "init-wp": "Installer::initWordPress",
-        "post-install-cmd": "php bin/initializer.php"
+        "post-create-project-cmd": "@php bin/initializer.php"
     },
     "autoload": {
         "psr-4": {

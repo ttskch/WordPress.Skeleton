@@ -12,7 +12,7 @@ $jsonArray['keywords'] = array();
 unset($jsonArray['homepage']);
 unset($jsonArray['authors']);
 unset($jsonArray['require-dev']);
-unset($jsonArray['scripts']['post-install-cmd']);
+unset($jsonArray['scripts']['post-create-project-cmd']);
 $newJsonString = json_encode($jsonArray, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
 file_put_contents($jsonPath, $newJsonString);
 
