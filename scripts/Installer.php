@@ -29,12 +29,10 @@ class Installer
     {
         $projectRoot = dirname(__DIR__);
 
-	    $jsonPath = "{$projectRoot}/composer.json";
-	    $jsonArray = json_decode(file_get_contents($jsonPath), true);
+        $jsonPath = "{$projectRoot}/composer.json";
+        $jsonArray = json_decode(file_get_contents($jsonPath), true);
 
-	    $wpdir = isset($jsonArray['extra']['wordpress-install-dir']) ?
-		    $jsonArray['extra']['wordpress-install-dir'] :
-		    'wp';
+        $wpdir = isset($jsonArray['extra']['wordpress-install-dir']) ? $jsonArray['extra']['wordpress-install-dir'] : 'wp';
 
         // delete original plugins dir.
         $pluginsDir = "{$projectRoot}/{$wpdir}/wp-content/plugins";
