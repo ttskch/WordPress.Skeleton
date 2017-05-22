@@ -29,8 +29,15 @@ class Installer
     {
         $projectRoot = dirname(__DIR__);
 
+	    $jsonPath = "{$projectRoot}/composer.json";
+	    $jsonArray = json_decode(file_get_contents($jsonPath), true);
+
+	    $wpdir = isset($jsonArray['extra']['wordpress-install-dir']) ?
+		    $jsonArray['extra']['wordpress-install-dir'] :
+		    'wp';
+
         // delete original plugins dir.
-        $pluginsDir = "{$projectRoot}/wp/wp-content/plugins";
+        $pluginsDir = "{$projectRoot}/{$wpdir}/wp-content/plugins";
         if (is_dir($pluginsDir) && !is_link($pluginsDir)) {
             $files = new \RecursiveIteratorIterator(
                 new \RecursiveDirectoryIterator($pluginsDir, \FilesystemIterator::SKIP_DOTS),
@@ -50,15 +57,15 @@ class Installer
         $paths = array(
             array(
                 'target' => '../../wp-content/themes',
-                'link' => "{$projectRoot}/wp/wp-content/my-themes",
+                'link' => "{$projectRoot}/{$wpdir}/wp-content/my-themes",
             ),
             array(
                 'target' => '../../wp-content/plugins',
-                'link' => "{$projectRoot}/wp/wp-content/plugins",
+                'link' => "{$projectRoot}/{$wpdir}/wp-content/plugins",
             ),
             array(
                 'target' => '../../wp-content/uploads',
-                'link' => "{$projectRoot}/wp/wp-content/uploads",
+                'link' => "{$projectRoot}/{$wpdir}/wp-content/uploads",
             ),
         );
 
