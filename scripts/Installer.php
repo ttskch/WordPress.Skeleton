@@ -2,40 +2,39 @@
 use Composer\DependencyResolver\Operation\InstallOperation;
 use Composer\DependencyResolver\Operation\UpdateOperation;
 use Composer\Installer\PackageEvent;
+use Composer\Script\Event;
 
 class Installer
 {
-    public static function postPackageInstall(PackageEvent $event = null)
+    public static function postPackageInstall(PackageEvent $event)
     {
         /** @var InstallOperation $operation */
         $operation = $event->getOperation();
 
         if ($operation->getPackage()->getName() === 'johnpbloch/wordpress') {
-            self::initWordPress();
+            self::initWordPress($event);
         }
     }
 
-    public static function postPackageUpdate(PackageEvent $event = null)
+    public static function postPackageUpdate(PackageEvent $event)
     {
         /** @var UpdateOperation $operation */
         $operation = $event->getOperation();
 
         if ($operation->getInitialPackage()->getName() === 'johnpbloch/wordpress') {
-            self::initWordPress();
+            self::initWordPress($event);
         }
     }
 
-    public static function initWordPress()
+    public static function initWordPress(Event $event)
     {
+        $extra = $event->getComposer()->getPackage()->getExtra();
+
         $projectRoot = dirname(__DIR__);
-
-        $jsonPath = "{$projectRoot}/composer.json";
-        $jsonArray = json_decode(file_get_contents($jsonPath), true);
-
-        $wpdir = isset($jsonArray['extra']['wordpress-install-dir']) ? $jsonArray['extra']['wordpress-install-dir'] : 'wp';
+        $wpDir = "{$projectRoot}/{$extra['wordpress-install-dir']}";
 
         // delete original plugins dir.
-        $pluginsDir = "{$projectRoot}/{$wpdir}/wp-content/plugins";
+        $pluginsDir = "{$wpDir}/wp-content/plugins";
         if (is_dir($pluginsDir) && !is_link($pluginsDir)) {
             $files = new \RecursiveIteratorIterator(
                 new \RecursiveDirectoryIterator($pluginsDir, \FilesystemIterator::SKIP_DOTS),
@@ -55,15 +54,15 @@ class Installer
         $paths = array(
             array(
                 'target' => '../../wp-content/themes',
-                'link' => "{$projectRoot}/{$wpdir}/wp-content/my-themes",
+                'link' => "{$wpDir}/wp-content/my-themes",
             ),
             array(
                 'target' => '../../wp-content/plugins',
-                'link' => "{$projectRoot}/{$wpdir}/wp-content/plugins",
+                'link' => "{$wpDir}/wp-content/plugins",
             ),
             array(
                 'target' => '../../wp-content/uploads',
-                'link' => "{$projectRoot}/{$wpdir}/wp-content/uploads",
+                'link' => "{$wpDir}/wp-content/uploads",
             ),
         );
 
