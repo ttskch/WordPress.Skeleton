@@ -146,4 +146,5 @@ Just to tell you, `/wp-config.php` (and `/local-config.php`) need not be symlink
 * [Acunetix Secure WordPress](https://wordpress.org/plugins/secure-wordpress/)
 * [Simple Local Avatars](https://wordpress.org/plugins/simple-local-avatars/)
 * [User Role Editor](https://wordpress.org/plugins/user-role-editor/)
-* [jyokyoku/wp-ogp-customized](https://github.com/jyokyoku/wp-ogp-customized)
+* ~~[jyokyoku/wp-ogp-customized](https://github.com/jyokyoku/wp-ogp-customized)~~
+    * Doesn't work on PHP 7. Use [ttskch/wp-ogp-customized](https://github.com/ttskch/wp-ogp-customized) instead.
